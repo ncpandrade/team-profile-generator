@@ -9,9 +9,9 @@ const generatePage = require('./src/page-template.js');
 //array to store Employee objects created from user input below
 const employees = [];
 
+
 function run() {
-    getMangerInfo()
-    
+    getMangerInfo()   
 }
 
 // manager function -> that creates manager instance
@@ -38,15 +38,10 @@ function getMangerInfo() {
         name: "officeNumber",
         message: "what is the manager's office number?"
     },
-    // {
-    //     type: "list",
-    //     message: "Which type of team member would you like to add?",
-    //     name: "role",
-    //     choices: ["Engineer", "Intern", "no more"]
-    // },
     ])
         .then(({ name, id, email, officeNumber }) => { //push manager object to employees array
             employees.push(new Manager(name, parseInt(id), email, parseInt(officeNumber)));
+            console.log(employees);
             enterEmployee();
         })
 }

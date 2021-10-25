@@ -1,43 +1,63 @@
 //create helper function for each type of employee
 //Manager
-const managerTemplate = (employees) => `
-<div class ="card-body">
-  <h1 class="card-title bg-primary">${employees.name}</h1>
-  <h2 class = "card-subtitle">${employees.getRole()}<h2>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${employees.id}</li>
-    <li class="list-group-item"><a href="${employees.email}">${employees.email}</a></li>
-    <li class="list-group-item">${employees.officeNumber}</li>
-  </ul>
-<div>
-`
+const managerTemplate = (employees) =>{
+  return `
+<div class="row">
+  <div class="col-sm-6">
+    <div class = "card">
+    <div class ="card-body">
+      <h1 class="card-title bg-primary">${employees.name}</h1>
+      <h2 class = "card-subtitle">${employees.getRole()}<h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${employees.id}</li>
+          <li class="list-group-item"><a href="mailto:${employees.email}">${employees.email}</a></li>
+          <li class="list-group-item">${employees.officeNumber}</li>
+        </ul>
+    <div>
+    </div>
+  </div>
+</div>
+`};
 
 //Engineer
-const engineerTemplate = (employees) => `
-<div class ="card-body">
-  <h1 class="card-title bg-primary">${employees.name}</h1>
-  <h2 class = "card-subtitle">${employees.getRole()}<h2>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${employees.id}</li>
-    <li class="list-group-item"><a href="${employees.email}">${employees.email}</a></li>
-    <li class="list-group-item"><a href="https://github.com/${employees.github}">Github</a></li>
-  </ul>
-  
+const engineerTemplate = (employees) => {
+  return`
+<div class="row">
+  <div class="col-sm-6">
+  <div class = "card">
+    <div class ="card-body">
+      <h1 class="card-title bg-primary">${employees.name}</h1>
+      <h2 class = "card-subtitle">${employees.getRole()}<h2>
+        <ul class="list-group list-group-flush">
+         <li class="list-group-item">${employees.id}</li>
+         <li class="list-group-item"><a href="mailto:${employees.email}">${employees.email}</a></li>
+         <li class="list-group-item"><a href="https://github.com/${employees.github}">Github</a></li>
+        </ul>
+     </div>
+     </div>
+  </div>
 <div>
-`
+`};
 
 //Intern
-const internTemplate = (employees) => `
-<div class ="card-body">
-  <h1 class="card-title bg-primary">${employees.name}</h1>
-  <h2 class = "card-subtitle">${employees.getRole()}<h2>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${employees.id}</li>
-    <li class="list-group-item"><a href="${employees.email}">${employees.email}</a></li>
-    <li class="list-group-item">${employees.school}</li>
-  </ul>
-<div>
-`
+const internTemplate = (employees) => {
+  return `
+<div class="row">
+  <div class="col-sm-6">
+  <div class = "card">
+    <div class ="card-body">
+      <h1 class="card-title bg-primary">${employees.name}</h1>
+      <h2 class = "card-subtitle">${employees.getRole()}<h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${employees.id}</li>
+          <li class="list-group-item"><a href="mailto:${employees.email}">${employees.email}</a></li>
+          <li class="list-group-item">${employees.school}</li>
+        </ul>
+    </div>
+    </div>
+  </div>
+</div>
+`};
 
 //FUNCTION to receive class instances and inserts them to HTML template literal
 const generatePage = (employees) => `
@@ -53,23 +73,20 @@ const generatePage = (employees) => `
 </head>
 
 <body>
-<div class="row">
-  <div class="col-sm-6">
-    <div class = card>
+
+    <div class>
       ${employees.map((empObj) => {
-      if (employees.role === 'Manager') {
-        return managerTemplate(empObj)
-      }
-       else if (employees.role === 'Engineer') {
-         return engineerTemplate(empObj)
-       }
-       else {
-         return internTemplate(empObj)
-       }
-      })
-      }
-      </div>
-    </div>
+  if (empObj.getRole() === 'Manager') {
+    return managerTemplate(empObj)
+  }
+  else if (empObj.getRole() === 'Engineer') {
+    return engineerTemplate(empObj)
+  }
+  else {
+    return internTemplate(empObj)
+  }
+})
+  }
   </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
