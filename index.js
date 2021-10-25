@@ -46,7 +46,6 @@ function getMangerInfo() {
     // },
     ])
         .then(({ name, id, email, officeNumber }) => { //push manager object to employees array
-            
             employees.push(new Manager(name, parseInt(id), email, parseInt(officeNumber)));
             enterEmployee();
         })
@@ -68,7 +67,7 @@ function enterEmployee() {
                 if (err) throw new Error(err);
             
                 console.log('Team profile complete! Check out index.html to see the output!');
-                console.log(employees);
+                
             });
             return;
         }
@@ -109,6 +108,7 @@ function getPromptByRole(role) {
             message: "what is the engineer's github username",
             name: "github"
         }
+        
     ]);
 }
 
@@ -117,15 +117,17 @@ function getEmployeeInfo(role) {
     return inquirer.prompt(getPromptByRole(role))
         .then(({ name, id, email, school, github }) => {
             let emp;
-            if (role === 'intern') {
-                emp = new Intern(role, name, id, email, school);
+            if (role === 'Intern') {
+                emp = new Intern(name, id, email, school);
+                console.log(emp);
             } else {
-                emp = new Engineer(role, name, id, email, github);
+                emp = new Engineer(name, id, email, github);
+                console.log(emp);
             }
-
+            
             //push new employee instances to employees array
             employees.push(emp);
-
+            console.log(employees);
 
         })
 }
