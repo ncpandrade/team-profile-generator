@@ -118,9 +118,9 @@ function getEmployeeInfo(role) {
         .then(({ name, id, email, school, github }) => {
             let emp;
             if (role === 'intern') {
-                emp = new Intern(name, id, email, school);
+                emp = new Intern(role, name, id, email, school);
             } else {
-                emp = new Engineer(name, id, email, github);
+                emp = new Engineer(role, name, id, email, github);
             }
 
             //push new employee instances to employees array
