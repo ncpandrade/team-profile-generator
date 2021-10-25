@@ -1,4 +1,27 @@
+//create helper function for each type of employee
+//Manager
+const managerTemplate = (employees) => `
+<div>
+  <h1>${employees.name}</h1>
+  <h2>${employees.role}<h2>
+<div>
+`
 
+//Engineer
+const engineerTemplate = (employees) => `
+<div>
+  <h1>${employees.name}</h1>
+  <h2>${employees.role}<h2>
+<div>
+`
+
+//Intern
+const internTemplate = (employees) => `
+<div>
+  <h1>${employees.name}</h1>
+  <h2>${employees.role}<h2>
+<div>
+`
 
 //FUNCTION to receive class instances and inserts them to HTML template literal
 const generatePage = (employees) => `
@@ -12,8 +35,23 @@ const generatePage = (employees) => `
 </head>
 
 <body>
-  <h1>${userName}</h1>
-  <h2><a href="https://github.com/${githubName}">Github</a></h2>
+//getting error cannot read property of map
+//is this b/c this.employees is not correct, does not include data yet?
+  ${employees.map((empObj) => {
+  if (employees.role === 'Manager') {
+    managerTemplate(empObj)
+  }
+  else if (employees.role === 'Engineer') {
+    engineerTemplate(empObj)
+  }
+  else {
+    internTemplate(empObj)
+  }
+})
+  }
+
+
+  <h2><a href="https://github.com/">Github</a></h2>
 </body>
 </html>
 `;
