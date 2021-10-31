@@ -19,8 +19,8 @@ const managerTemplate = (employees) => `
   `
 
 //Engineer
-const engineerTemplate = (employees) => {
-  return `
+const engineerTemplate = (employees) => 
+  `
     <div class="col-sm-4" style="margin-top: 50px;">
       <div class ="card" style="width: 20rem;">
         <div class="card-header bg-primary">
@@ -36,7 +36,7 @@ const engineerTemplate = (employees) => {
         </div>
         </div>
       </div>
-`};
+`;
 
 //Intern
 const internTemplate = (employees) => `

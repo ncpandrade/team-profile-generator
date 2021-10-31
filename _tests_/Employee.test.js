@@ -1,19 +1,42 @@
+const Employee = require("../lib/Employee");
 
-const Employee = require ('../lib/Employee');
+test("Can instantiate Employee instance", () => {
+  const employee = new Employee();
+  expect(typeof(employee)).toBe("object");
+});
 
-test('Can instantiate Employee instance', () => {
-    const employee = new Employee('Dave', 1234, 'a@a.com');
+test("Can set name", () => {
+  const name = "Bob";
+  const employee = new Employee(name);
+  expect(employee.name).toBe(name);
+});+
 
-    //test for name, id, email
-    expect(employee.name).toBe('Dave');
-    expect( typeof employee.id).toBe('number');
-    expect(employee.email).toBe(expect.any(String));
-    
-    // //test for methods:
-    // test('Can set name via constructor arguments', () => {
-        //const emplyee = new Employee('Dave');
+test("Can set id", () => {
+  const testValue = 100;
+  const employee = new Employee("Bob", testValue);
+  expect(employee.id).toBe(testValue);
+});
 
-        //test for getName()
-        //expect(employee.getName()).toHaveProperty('name');
-// })
-})
+test("Can set email", () => {
+  const testValue = "test@test.com";
+  const employee = new Employee("Bob", 1, testValue);
+  expect(employee.email).toBe(testValue);
+});
+
+test("Can get name via getName()", () => {
+  const testValue = "Bob";
+  const employee = new Employee(testValue);
+  expect(employee.getName()).toBe(testValue);
+});
+
+test("Can get id via getId()", () => {
+  const testValue = "100";
+  const employee = new Employee("Bob", testValue);
+  expect(employee.getId()).toBe(testValue);
+});
+
+test("Can get email via getEmail()", () => {
+  const testValue = "test@test.com";
+  const employee = new Employee("Bob", 1, testValue);
+  expect(employee.getEmail()).toBe(testValue);
+});

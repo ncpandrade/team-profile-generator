@@ -127,8 +127,7 @@ function getEmployeeInfo(role) {
         })
 }
 
-//write html.index file
-// need to pass argument to generatePage-> employees array????
+
 
 
 
